@@ -1,0 +1,55 @@
+{
+  "private": true,
+  "sideEffects": false,
+  "scripts": {
+    "dev": "remix dev",
+    "dev:local": "env-cmd -f local.env remix dev",
+    "typecheck": "tsc",
+    "build": "run-s build:*",
+    "build:remix": "remix build",
+    "generate:type": "graphql-codegen --config ./lib/graphql-codegen/codegen.yml",
+    "format": "prettier --write .",
+    "lint": "eslint --fix --cache --cache-location  ./node_modules/.cache/eslint ."
+  },
+  "dependencies": {
+    "@apollo/client": "^3.7.12",
+    "@remix-run/node": "^1.15.0",
+    "@remix-run/react": "^1.15.0",
+    "@remix-run/vercel": "^1.15.0",
+    "@vercel/node": "^2.6.2",
+    "env-cmd": "^10.1.0",
+    "i18next": "^22.4.14",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-fs-backend": "^2.1.1",
+    "i18next-http-backend": "^2.2.0",
+    "isbot": "^3.6.5",
+    "markdown-to-jsx": "^7.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10",
+    "react-i18next": "^12.2.0",
+    "remix-i18next": "^5.1.1",
+    "tailwind-merge": "^1.12.0"
+  },
+  "devDependencies": {
+    "@graphql-codegen/cli": "^3.3.0",
+    "@graphql-codegen/typed-document-node": "^4.0.0",
+    "@graphql-codegen/typescript": "^3.0.3",
+    "@graphql-codegen/typescript-operations": "^3.0.3",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
+    "@remix-run/dev": "^1.15.0",
+    "@remix-run/eslint-config": "^1.15.0",
+    "@remix-run/serve": "^1.15.0",
+    "@types/react": "^18.0.25",
+    "@types/react-dom": "^18.0.8",
+    "eslint": "^8.27.0",
+    "eslint-config-prettier": "^8.8.0",
+    "graphql": "^16.6.0",
+    "prettier-plugin-tailwindcss": "^0.2.7",
+    "tailwindcss": "^3.3.1",
+    "typescript": "^4.8.4"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

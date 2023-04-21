@@ -1,0 +1,73 @@
+version: "3"
+
+services:
+  # Backend: Strapi
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./local.Dockerfile
+    image: strapi:3.6.8
+    restart: unless-stopped
+    env_file:
+      - ./backend/local.env
+    environment:
+      - NODE_ENV=development
+      - DATABASE_HOST=database
+    volumes:
+      - ./backend/config:/opt/app/config
+      - ./backend/src:/opt/app/src
+      - ./backend/package.json:/opt/package.json
+      - ./backend/local.env:/opt/app/.env
+      - ./backend/public:/opt/app/public
+      - ./backend/types:/opt/app/types
+    ports:
+      - "1337:1337"
+    networks:
+      - app-network
+    depends_on:
+      - database
+
+  # DB: MySQL
+  database:
+    platform: linux/amd64
+    build:
+      context: ./database
+      dockerfile: ./local.Dockerfile
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./database/data/init:/docker-entrypoint-initdb.d
+      - ./database/data/conf.d:/etc/mysql/conf.d
+    env_file:
+      - ./database/local.env
+    tty: true
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Frontend: Remix
+  frontend:
+    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: ./local.Dockerfile
+      target: runner
+    tty: true
+    environment:
+      - NODE_ENV=development
+      - APP_GRAPHQL_URL=http://cms:1337/graphql
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules/
+    ports:
+      - "3000:3000"
+      - "8002:8002"
+    depends_on:
+      - cms
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    name: app-network
+    driver: bridge

@@ -1,0 +1,12 @@
+overwrite: true
+schema: "http://localhost:1337/graphql"
+# schema: ${APP_GRAPHQL_URL}
+# NOTE: In case if you want to use `.graphql` files
+# documents: "**/*.graphql"
+documents: "**/!(*.d).{ts,tsx}"
+generates:
+  ./types/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typed-document-node
