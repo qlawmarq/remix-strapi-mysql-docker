@@ -10,11 +10,11 @@ import {
 } from "@remix-run/react";
 import { LinksFunction, LoaderArgs, json } from "@remix-run/node";
 import { remixI18next } from "lib/i18n";
-import { useTranslation } from "react-i18next";
 import { Layout } from "./components/Templates/Layout";
+import { getUserLocale } from "./sessions.server";
 
 export async function loader({ request }: LoaderArgs) {
-  const locale = await remixI18next.getLocale(request);
+  const locale = await getUserLocale(request);
   return json({ locale });
 }
 
@@ -24,10 +24,8 @@ export const links: LinksFunction = () => [
 
 export default function App() {
   const { locale } = useLoaderData<typeof loader>();
-  const { i18n } = useTranslation();
-
   return (
-    <html lang={locale} dir={i18n.dir()}>
+    <html lang={locale}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />

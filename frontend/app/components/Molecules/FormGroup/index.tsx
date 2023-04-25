@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from "react";
-import { Paragraph, Span } from "@components/Atoms/Typography";
-import { Button } from "@components/Atoms/Button";
+import { Paragraph, Span } from "../../Atoms/Typography";
+import { Button } from "../../Atoms/Button";
 
 type Props = {
   title: string;

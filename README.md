@@ -2,7 +2,7 @@
 
 ## Elements
 
-- [Strapi (CMS)](https://docs.strapi.io/)
+- [Strapi (Backend)](https://docs.strapi.io/)
 - [Remix (Frontend)](https://remix.run/)
   - [i18n (internationalization)](https://www.i18next.com/)
   - [Apollo (GraphQL client)](https://www.apollographql.com/docs/)
@@ -59,7 +59,7 @@ npm run generate:type
 ## Todo list
 
 - [ ] adjust ui design
-- [ ] create language-selector component
+- [x] create language-selector component
 - [ ] create theme-selector (dark/light) component
 - [ ] add i18n locale contents
 - [ ] adjust frontend Docker env or remove frontend from Docker env

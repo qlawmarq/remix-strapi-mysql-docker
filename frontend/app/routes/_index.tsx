@@ -11,10 +11,11 @@ import type {
 import { H2, Span } from "~/components/Atoms/Typography";
 import { useTranslation } from "react-i18next";
 import { remixI18next } from "lib/i18n";
+import { getUserLocale } from "~/sessions.server";
 
 export const loader = async ({ request }: LoaderArgs) => {
   const t = await remixI18next.getFixedT(request, "common");
-  const locale = await remixI18next.getLocale(request);
+  const locale = await getUserLocale(request);
   const valiables: GetAllArticlesByLocaleQueryVariables = {
     locale: locale,
   };
