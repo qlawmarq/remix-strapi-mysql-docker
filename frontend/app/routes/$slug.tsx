@@ -8,12 +8,11 @@ import type {
   GetArticlesByLocaleAndSlugQueryVariables,
 } from "types/generated";
 import { H1, Span } from "~/components/Atoms/Typography";
-import { remixI18next } from "lib/i18n";
 import { MarkdownComponent } from "~/components/Molecules/Markdown";
+import { getUserLocale } from "~/sessions.server";
 
 export const loader = async ({ params, request }: LoaderArgs) => {
-  const t = await remixI18next.getFixedT(request, "common");
-  const locale = await remixI18next.getLocale(request);
+  const locale = await getUserLocale(request);
   const valiables: GetArticlesByLocaleAndSlugQueryVariables = {
     locale: locale,
     slug: params.slug,
@@ -29,15 +28,15 @@ export const loader = async ({ params, request }: LoaderArgs) => {
     });
   }
 
-  return json({ response: data[0], translation: { title: t("title") } });
+  return json({ response: data[0] });
 };
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
-  return [{ title: data.translation.title }];
+  return [{ title: data.response.attributes?.title }];
 };
 
 export default function Index() {
-  const { response, translation } = useLoaderData<typeof loader>();
+  const { response } = useLoaderData<typeof loader>();
 
   return (
     <div>
