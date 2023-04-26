@@ -1,0 +1,33 @@
+{
+  "data": {
+    "articles": {
+      "__typename": "ArticleEntityResponseCollection",
+      "data": [
+        {
+          "__typename": "ArticleEntity",
+          "id": "1",
+          "attributes": {
+            "__typename": "Article",
+            "title": "Test 01",
+            "description": "This article is just created for testing.",
+            "content": "## Hello\n\nThis article is just created for testing.\n\nJust enjoy testing!\n\n## Test\n\nI want to test.",
+            "slug": "test",
+            "createdAt": "2023-04-26T08:58:46.965Z",
+            "updatedAt": "2023-04-26T08:59:59.837Z",
+            "publishedAt": "2023-04-26T08:59:59.798Z",
+            "category": {
+              "__typename": "CategoryEntityResponse",
+              "data": null
+            },
+            "cover": {
+              "__typename": "UploadFileEntityResponse",
+              "data": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  "loading": false,
+  "networkStatus": 7
+}

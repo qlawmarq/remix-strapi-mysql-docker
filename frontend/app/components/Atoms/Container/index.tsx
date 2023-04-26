@@ -5,5 +5,7 @@ export const Container = ({
   className,
   ...props
 }: HTMLProps<HTMLDivElement>) => {
-  return <div className={twMerge("mx-auto px-4", className)} {...props} />;
+  return (
+    <div className={twMerge("container mx-auto px-4", className)} {...props} />
+  );
 };

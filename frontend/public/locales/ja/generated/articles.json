@@ -1,0 +1,33 @@
+{
+  "data": {
+    "articles": {
+      "__typename": "ArticleEntityResponseCollection",
+      "data": [
+        {
+          "__typename": "ArticleEntity",
+          "id": "2",
+          "attributes": {
+            "__typename": "Article",
+            "title": "テスト",
+            "description": "この記事はテストのために作られました。",
+            "content": "## やあ\n\nこの記事はテストのために作られました。\n\nテストを楽しんで！\n\n## テスト\n\nテストがしたい。",
+            "slug": "test-ja",
+            "createdAt": "2023-04-26T08:59:51.062Z",
+            "updatedAt": "2023-04-26T08:59:52.428Z",
+            "publishedAt": "2023-04-26T08:59:52.398Z",
+            "category": {
+              "__typename": "CategoryEntityResponse",
+              "data": null
+            },
+            "cover": {
+              "__typename": "UploadFileEntityResponse",
+              "data": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  "loading": false,
+  "networkStatus": 7
+}

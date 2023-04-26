@@ -1,0 +1,19 @@
+{
+  "data": {
+    "home": {
+      "__typename": "HomeEntityResponse",
+      "data": {
+        "__typename": "HomeEntity",
+        "attributes": {
+          "__typename": "Home",
+          "title": "Remix Strapi Blog",
+          "description": "A Blog created by Remix and Strapi",
+          "updatedAt": "2023-04-26T09:28:36.099Z",
+          "createdAt": "2023-04-26T09:27:56.191Z"
+        }
+      }
+    }
+  },
+  "loading": false,
+  "networkStatus": 7
+}

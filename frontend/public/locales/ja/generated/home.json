@@ -1,0 +1,19 @@
+{
+  "data": {
+    "home": {
+      "__typename": "HomeEntityResponse",
+      "data": {
+        "__typename": "HomeEntity",
+        "attributes": {
+          "__typename": "Home",
+          "title": "Remix Strapi Blog",
+          "description": "Remix と Strapi によって構築されたブログ",
+          "updatedAt": "2023-04-26T09:28:36.059Z",
+          "createdAt": "2023-04-26T09:28:36.059Z"
+        }
+      }
+    }
+  },
+  "loading": false,
+  "networkStatus": 7
+}

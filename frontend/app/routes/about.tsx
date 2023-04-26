@@ -1,4 +1,3 @@
-import { Layout } from "~/components/Templates/Layout";
 import { LoaderArgs, json } from "@remix-run/node";
 import { V2_MetaFunction } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
@@ -8,19 +7,32 @@ import type {
   GetAboutByLocaleQuery,
   GetAboutByLocaleQueryVariables,
 } from "types/generated";
-import { H1, Paragraph } from "~/components/Atoms/Typography";
+import { H1 } from "~/components/Atoms/Typography";
 import { getUserLocale } from "~/sessions.server";
 import { Markdown } from "~/components/Molecules/Markdown";
+import { readJsonFileByPath, writeJsonFileToPath } from "~/lib/utils/json";
+import { ApolloQueryResult } from "@apollo/client";
+import { APP_DATA_RETRIEVAL_METHOD } from "~/lib/utils/constants";
 
 export const loader = async ({ request }: LoaderArgs) => {
   const locale = await getUserLocale(request);
-  const valiables: GetAboutByLocaleQueryVariables = {
+
+  // Load all articles
+  const articlesValiables: GetAboutByLocaleQueryVariables = {
     locale: locale,
   };
-  const res = await graphQLClient.query<GetAboutByLocaleQuery>({
-    query: getAboutByLocale,
-    variables: valiables,
-  });
+  const aboutJsonPath = `locales/${locale}/generated/about.json`;
+  const res =
+    APP_DATA_RETRIEVAL_METHOD === "json"
+      ? (readJsonFileByPath(
+          aboutJsonPath
+        ) as ApolloQueryResult<GetAboutByLocaleQuery>)
+      : await graphQLClient.query<GetAboutByLocaleQuery>({
+          query: getAboutByLocale,
+          variables: articlesValiables,
+        });
+  APP_DATA_RETRIEVAL_METHOD === "api" &&
+    writeJsonFileToPath(res, aboutJsonPath);
 
   const data = res.data.about?.data?.attributes;
 
