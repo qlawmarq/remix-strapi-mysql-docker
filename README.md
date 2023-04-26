@@ -60,6 +60,6 @@ npm run generate:type
 
 - [ ] adjust ui design
 - [x] create language-selector component
-- [ ] create theme-selector (dark/light) component
+- [x] create theme-selector (dark/light) component
 - [ ] add i18n locale contents
 - [ ] adjust frontend Docker env or remove frontend from Docker env
