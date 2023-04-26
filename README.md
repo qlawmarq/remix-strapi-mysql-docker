@@ -62,4 +62,5 @@ npm run generate:type
 - [x] create language-selector component
 - [x] create theme-selector (dark/light) component
 - [x] add i18n locale contents
+- [x] work if api doesn't work or doesn't exist.
 - [ ] adjust frontend Docker env or remove frontend from Docker env

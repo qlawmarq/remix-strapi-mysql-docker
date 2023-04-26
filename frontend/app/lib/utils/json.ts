@@ -1,13 +1,13 @@
-// ./app/utils/readWrite.ts
 import fs from "fs";
+import { resolve, join } from "path";
 
-// JSON file containing books array
-const dataPath = `${process.cwd()}/app/data/books.json`;
+// JSON file path
+const dataPath = (path: string = "") => resolve(join("./public/", path));
 
 // function to read file contents
-export const read = (path = dataPath) => {
+export const readJsonFileByPath = (path: string) => {
   try {
-    let data = fs.readFileSync(path, "utf8");
+    let data = fs.readFileSync(dataPath(path), "utf8");
     return JSON.parse(data);
   } catch (error) {
     console.log({ error });
@@ -16,10 +16,10 @@ export const read = (path = dataPath) => {
 };
 
 // function to write content to file
-export const write = (data: object, path = dataPath) => {
+export const writeJsonFileToPath = (data: object, path: string) => {
   try {
-    fs.writeFileSync(path, JSON.stringify(data, null, 2));
-    let result = read();
+    fs.writeFileSync(dataPath(path), JSON.stringify(data, null, 2));
+    let result = readJsonFileByPath(path);
     return result;
   } catch (error) {
     console.log({ error });
