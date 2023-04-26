@@ -7,8 +7,8 @@
     "typecheck": "tsc",
     "build": "run-s build:*",
     "build:remix": "remix build",
-    "generate:type": "graphql-codegen --config ./lib/graphql-codegen/codegen.yml",
-    "format": "prettier --write .",
+    "generate:type": "env-cmd -f local.env graphql-codegen --config ./app/lib/graphql-codegen/codegen.yml",
+    "format": "prettier --write 'app/**' --config ./.prettierrc.js",
     "lint": "eslint --fix --cache --cache-location  ./node_modules/.cache/eslint ."
   },
   "dependencies": {

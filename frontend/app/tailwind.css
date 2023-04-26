@@ -4,8 +4,6 @@
 
 html,
 body {
-  margin: 0;
-  overscroll-behavior-y: none;
-  min-height: 100vh;
-  @apply bg-gradient-to-r from-white to-primary-50 dark:from-black dark:to-primary-900;
+  overscroll-behavior: none;
+  @apply m-auto min-h-screen bg-gradient-to-r from-white to-primary-100 transition duration-300 ease-in-out dark:from-black dark:to-primary-900;
 }

@@ -84,7 +84,23 @@ export const getAboutByLocale = gql`
       data {
         attributes {
           title
+          description
           content
+          updatedAt
+          createdAt
+        }
+      }
+    }
+  }
+`;
+
+export const getHomeByLocale = gql`
+  query GetHomeByLocale($locale: I18NLocaleCode) {
+    home(locale: $locale) {
+      data {
+        attributes {
+          title
+          description
           updatedAt
           createdAt
         }

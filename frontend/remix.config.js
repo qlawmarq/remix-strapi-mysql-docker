@@ -16,6 +16,11 @@ module.exports = {
     v2_normalizeFormMethod: true,
     v2_routeConvention: true,
   },
-  serverDependenciesToBundle: ["@apollo/client"],
+  // ESM only package
+  serverDependenciesToBundle: [
+    "@apollo/client",
+    "ts-invariant",
+    "zen-observable-ts",
+  ],
   devServerPort: 8002,
 };

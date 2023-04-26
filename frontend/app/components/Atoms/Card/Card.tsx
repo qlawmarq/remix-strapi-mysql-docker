@@ -6,7 +6,7 @@ export const Card: React.FC<HTMLAttributes<HTMLElement>> = (props) => {
     <div
       {...props}
       className={twMerge(
-        "rounded-xl bg-white drop-shadow dark:bg-gray-900",
+        "overflow-hidden rounded-2xl border border-gray-300 bg-gray-50 px-4 py-3 dark:bg-gray-900 md:px-5 md:py-4 lg:px-7 lg:py-5",
         props.className
       )}
     >

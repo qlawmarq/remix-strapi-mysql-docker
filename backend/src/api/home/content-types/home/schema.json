@@ -1,11 +1,11 @@
 {
   "kind": "singleType",
-  "collectionName": "abouts",
+  "collectionName": "homes",
   "info": {
-    "singularName": "about",
-    "pluralName": "abouts",
-    "displayName": "About",
-    "description": "Write about yourself and the content you create"
+    "singularName": "home",
+    "pluralName": "homes",
+    "displayName": "Home",
+    "description": "Write about this website and the content you create"
   },
   "options": {
     "draftAndPublish": false
@@ -17,12 +17,12 @@
   },
   "attributes": {
     "title": {
-      "type": "string",
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
+      "type": "string",
       "required": true
     },
     "description": {
@@ -32,15 +32,6 @@
         }
       },
       "type": "text",
-      "required": true
-    },
-    "content": {
-      "type": "richtext",
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
       "required": true
     }
   }

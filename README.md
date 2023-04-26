@@ -10,7 +10,7 @@
 
 ```
 .
-├── cms
+├── backend
 │   └── ... Strapi files
 ├── database
 │   └── ... MySQL files
@@ -58,8 +58,8 @@ npm run generate:type
 
 ## Todo list
 
-- [ ] adjust ui design
+- [x] adjust ui design
 - [x] create language-selector component
 - [x] create theme-selector (dark/light) component
-- [ ] add i18n locale contents
+- [x] add i18n locale contents
 - [ ] adjust frontend Docker env or remove frontend from Docker env

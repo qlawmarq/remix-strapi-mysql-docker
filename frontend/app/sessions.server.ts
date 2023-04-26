@@ -1,5 +1,5 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node";
-import { remixI18next } from "lib/i18n";
+import { remixI18next } from "~/lib/i18n";
 
 const sessionStorage = createCookieSessionStorage({
   cookie: {
