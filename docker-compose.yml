@@ -3,6 +3,7 @@ version: "3"
 services:
   # Backend: Strapi
   backend:
+    platform: linux/amd64
     build:
       context: ./backend
       dockerfile: ./local.Dockerfile
@@ -46,26 +47,26 @@ services:
       - app-network
 
   # Frontend: Remix
-  # frontend:
-  #   restart: unless-stopped
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: ./local.Dockerfile
-  #     target: runner
-  #   tty: true
-  #   environment:
-  #     - NODE_ENV=development
-  #     - APP_GRAPHQL_URL=http://cms:1337/graphql
-  #   volumes:
-  #     - ./frontend:/app
-  #     - /app/node_modules/
-  #   ports:
-  #     - "3000:3000"
-  #     - "8002:8002"
-  #   depends_on:
-  #     - cms
-  #   networks:
-  #     - app-network
+  frontend:
+    restart: unless-stopped
+    build:
+      context: ./frontend
+      dockerfile: ./local.Dockerfile
+      target: runner
+    tty: true
+    environment:
+      - NODE_ENV=development
+      - APP_GRAPHQL_URL=http://backend:1337/graphql
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules/
+    ports:
+      - "3000:3000"
+      - "8002:8002"
+    depends_on:
+      - backend
+    networks:
+      - app-network
 
 networks:
   app-network:

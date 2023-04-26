@@ -5,6 +5,7 @@
 type About {
   content: String!
   createdAt: DateTime
+  description: String!
   locale: String
   localizations: AboutRelationResponseCollection
   title: String!
@@ -29,6 +30,7 @@ input AboutFiltersInput {
   and: [AboutFiltersInput]
   content: StringFilterInput
   createdAt: DateTimeFilterInput
+  description: StringFilterInput
   locale: StringFilterInput
   localizations: AboutFiltersInput
   not: AboutFiltersInput
@@ -39,6 +41,7 @@ input AboutFiltersInput {
 
 input AboutInput {
   content: String
+  description: String
   title: String
 }
 
@@ -364,7 +367,51 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = About | Article | Category | ComponentSharedMedia | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = About | Article | Category | ComponentSharedMedia | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | Home | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+
+type Home {
+  createdAt: DateTime
+  description: String!
+  locale: String
+  localizations: HomeRelationResponseCollection
+  title: String!
+  updatedAt: DateTime
+}
+
+type HomeEntity {
+  attributes: Home
+  id: ID
+}
+
+type HomeEntityResponse {
+  data: HomeEntity
+}
+
+type HomeEntityResponseCollection {
+  data: [HomeEntity!]!
+  meta: ResponseCollectionMeta!
+}
+
+input HomeFiltersInput {
+  and: [HomeFiltersInput]
+  createdAt: DateTimeFilterInput
+  description: StringFilterInput
+  locale: StringFilterInput
+  localizations: HomeFiltersInput
+  not: HomeFiltersInput
+  or: [HomeFiltersInput]
+  title: StringFilterInput
+  updatedAt: DateTimeFilterInput
+}
+
+input HomeInput {
+  description: String
+  title: String
+}
+
+type HomeRelationResponseCollection {
+  data: [HomeEntity!]!
+}
 
 type I18NLocale {
   code: String
@@ -524,6 +571,7 @@ type Mutation {
   createArticleLocalization(data: ArticleInput, id: ID, locale: I18NLocaleCode): ArticleEntityResponse
   createCategory(data: CategoryInput!, locale: I18NLocaleCode): CategoryEntityResponse
   createCategoryLocalization(data: CategoryInput, id: ID, locale: I18NLocaleCode): CategoryEntityResponse
+  createHomeLocalization(data: HomeInput, id: ID, locale: I18NLocaleCode): HomeEntityResponse
   createUploadFile(data: UploadFileInput!): UploadFileEntityResponse
   createUploadFolder(data: UploadFolderInput!): UploadFolderEntityResponse
 
@@ -535,6 +583,7 @@ type Mutation {
   deleteAbout(locale: I18NLocaleCode): AboutEntityResponse
   deleteArticle(id: ID!, locale: I18NLocaleCode): ArticleEntityResponse
   deleteCategory(id: ID!, locale: I18NLocaleCode): CategoryEntityResponse
+  deleteHome(locale: I18NLocaleCode): HomeEntityResponse
   deleteUploadFile(id: ID!): UploadFileEntityResponse
   deleteUploadFolder(id: ID!): UploadFolderEntityResponse
 
@@ -564,6 +613,7 @@ type Mutation {
   updateArticle(data: ArticleInput!, id: ID!, locale: I18NLocaleCode): ArticleEntityResponse
   updateCategory(data: CategoryInput!, id: ID!, locale: I18NLocaleCode): CategoryEntityResponse
   updateFileInfo(id: ID!, info: FileInfoInput): UploadFileEntityResponse!
+  updateHome(data: HomeInput!, locale: I18NLocaleCode): HomeEntityResponse
   updateUploadFile(data: UploadFileInput!, id: ID!): UploadFileEntityResponse
   updateUploadFolder(data: UploadFolderInput!, id: ID!): UploadFolderEntityResponse
 
@@ -600,6 +650,7 @@ type Query {
   articles(filters: ArticleFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ArticleEntityResponseCollection
   categories(filters: CategoryFiltersInput, locale: I18NLocaleCode, pagination: PaginationArg = {}, sort: [String] = []): CategoryEntityResponseCollection
   category(id: ID, locale: I18NLocaleCode): CategoryEntityResponse
+  home(locale: I18NLocaleCode): HomeEntityResponse
   i18NLocale(id: ID): I18NLocaleEntityResponse
   i18NLocales(filters: I18NLocaleFiltersInput, pagination: PaginationArg = {}, sort: [String] = []): I18NLocaleEntityResponseCollection
   me: UsersPermissionsMe

@@ -11,7 +11,7 @@ import {
 import { LinksFunction, LoaderArgs, json } from "@remix-run/node";
 import { Layout } from "./components/Templates/Layout";
 import { getUserLocale } from "./sessions.server";
-import { useLayoutEffect } from "react";
+import { useEffect } from "react";
 
 export async function loader({ request }: LoaderArgs) {
   const locale = await getUserLocale(request);
@@ -24,7 +24,7 @@ export const links: LinksFunction = () => [
 
 export default function App() {
   const { locale } = useLoaderData<typeof loader>();
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (
       localStorage.theme === "dark" ||
       (!("theme" in localStorage) &&

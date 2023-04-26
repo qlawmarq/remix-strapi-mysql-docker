@@ -4,8 +4,8 @@ import { Span } from "~/components/Atoms/Typography";
 
 export const Footer = () => {
   return (
-    <footer className="border-t-color border-gray200 mt-10 border-t">
-      <Container className="py-8">
+    <footer>
+      <Container className="border-t-color mt-10 border-t border-gray-300 py-8">
         <ul className="mb-6 flex flex-wrap items-center">
           <li>
             <Span className="mr-4">

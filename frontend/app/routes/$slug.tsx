@@ -1,14 +1,14 @@
 import { LoaderArgs, json } from "@remix-run/node";
 import { V2_MetaFunction } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
-import { graphQLClient } from "lib/apollo";
-import { getArticlesByLocaleAndSlug } from "lib/apollo/query";
+import { graphQLClient } from "~/lib/apollo";
+import { getArticlesByLocaleAndSlug } from "~/lib/apollo/query";
 import type {
   GetArticlesByLocaleAndSlugQuery,
   GetArticlesByLocaleAndSlugQueryVariables,
 } from "types/generated";
 import { H1, Span } from "~/components/Atoms/Typography";
-import { MarkdownComponent } from "~/components/Molecules/Markdown";
+import { Markdown } from "~/components/Molecules/Markdown";
 import { getUserLocale } from "~/sessions.server";
 
 export const loader = async ({ params, request }: LoaderArgs) => {
@@ -32,7 +32,10 @@ export const loader = async ({ params, request }: LoaderArgs) => {
 };
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {
-  return [{ title: data.response.attributes?.title }];
+  return [
+    { title: data.response.attributes?.title },
+    { description: data.response.attributes?.description },
+  ];
 };
 
 export default function Index() {
@@ -50,7 +53,7 @@ export default function Index() {
               </time>
             </Span>
           </div>
-          <MarkdownComponent>{response.attributes.content}</MarkdownComponent>
+          <Markdown>{response.attributes.content}</Markdown>
         </>
       )}
     </div>

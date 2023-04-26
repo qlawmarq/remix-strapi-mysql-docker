@@ -1,6 +1,6 @@
 import { Form } from "@remix-run/react";
-import { i18nConfig } from "lib/i18n";
-import { useLayoutEffect, useRef, useState } from "react";
+import { i18nConfig } from "~/lib/i18n";
+import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Container } from "~/components/Atoms/Container";
 import { Select, Toggle } from "~/components/Atoms/Form";
@@ -12,12 +12,12 @@ export const Header = () => {
   const changeLanguageHandler = (locale: string) => {
     i18n.changeLanguage(locale);
   };
-  useLayoutEffect(() => {
+  useEffect(() => {
     setIsDarkMode(document.documentElement.classList.contains("dark"));
   }, []);
   return (
-    <header className="py-6">
-      <Container className="flex items-center justify-between">
+    <header>
+      <Container className="flex items-center justify-between py-8">
         <Form action="/api/change-locale" method="post" ref={el}>
           <Select
             className="w-auto"

@@ -13,7 +13,7 @@ const Component: React.FC<
   let inputClassName = `${commonInputClassName} `;
   inputClassName = props.disabled
     ? inputClassName +
-      "bg-gray-50 text-gray-600 dark:text-gray-400  cursor-not-allowed "
+      "bg-gray-50 text-gray-600 dark:text-gray-400 cursor-not-allowed "
     : inputClassName;
   inputClassName = props?.iconleft
     ? inputClassName + "pl-10 "
