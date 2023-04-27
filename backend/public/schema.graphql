@@ -219,23 +219,6 @@ input ComponentSharedQuoteInput {
   title: String
 }
 
-type ComponentSharedRichText {
-  body: String
-  id: ID!
-}
-
-input ComponentSharedRichTextFiltersInput {
-  and: [ComponentSharedRichTextFiltersInput]
-  body: StringFilterInput
-  not: ComponentSharedRichTextFiltersInput
-  or: [ComponentSharedRichTextFiltersInput]
-}
-
-input ComponentSharedRichTextInput {
-  body: String
-  id: ID
-}
-
 type ComponentSharedSeo {
   id: ID!
   metaDescription: String!
@@ -367,7 +350,7 @@ input FloatFilterInput {
   startsWith: Float
 }
 
-union GenericMorph = About | Article | Category | ComponentSharedMedia | ComponentSharedQuote | ComponentSharedRichText | ComponentSharedSeo | ComponentSharedSlider | Home | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
+union GenericMorph = About | Article | Category | ComponentSharedMedia | ComponentSharedQuote | ComponentSharedSeo | ComponentSharedSlider | Home | I18NLocale | UploadFile | UploadFolder | UsersPermissionsPermission | UsersPermissionsRole | UsersPermissionsUser
 
 type Home {
   createdAt: DateTime

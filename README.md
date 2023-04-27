@@ -3,8 +3,11 @@
 ## Elements
 
 - [Strapi (Backend)](https://docs.strapi.io/)
+  - [i18n (internationalization)](https://strapi.io/features/internationalization)
+  - [GraphQL API](https://docs.strapi.io/dev-docs/api/graphql)
 - [Remix (Frontend)](https://remix.run/)
-  - [i18n (internationalization)](https://www.i18next.com/)
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [i18n (internationalization)](https://github.com/sergiodxa/remix-i18next)
   - [Apollo (GraphQL client)](https://www.apollographql.com/docs/)
   - [GraphQL codegen](https://the-guild.dev/graphql/codegen)
 
@@ -19,7 +22,7 @@
 
 ```
 
-## Setup local development environment
+## Setup local development environment (Docker)
 
 ```sh
 docker-compose build
@@ -56,11 +59,33 @@ docker-compose exec frontend bash
 npm run generate:type
 ```
 
-## Todo list
+## Setup local development environment (without Docker)
 
-- [x] adjust ui design
-- [x] create language-selector component
-- [x] create theme-selector (dark/light) component
-- [x] add i18n locale contents
-- [x] work if api doesn't work or doesn't exist.
-- [ ] adjust frontend Docker env or remove frontend from Docker env
+It can also be set up without Docker.
+
+### Frontend
+
+Since it is easier to refer to the type information by having `node_modules` locally, not using Docker only for Frontend is also an option.
+
+```sh
+cd frontend
+npm i
+npm run dev
+```
+
+### Backend
+
+Backend need setup database in your local.
+Therefore, I recommend using Docker for the database and backend at least.
+
+```sh
+cd backend
+npm i
+npm run dev
+```
+
+## Todo & What I Did
+
+- [x] [Language-selector & support i18n feature.](https://github.com/qlawmarq/remix-strapi-mysql-template/pull/1/files)
+- [x] [Theme selector (dark/light).](https://github.com/qlawmarq/remix-strapi-mysql-template/pull/2)
+- [x] [Frontend works even if the API does not work or does not exist.](https://github.com/qlawmarq/remix-strapi-mysql-template/pull/4)
