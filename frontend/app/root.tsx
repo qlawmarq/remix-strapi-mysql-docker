@@ -13,14 +13,21 @@ import { Layout } from "./components/Templates/Layout";
 import { getUserLocale } from "./sessions.server";
 import { useEffect } from "react";
 
+export const links: LinksFunction = () => [
+  // Tailwind
+  { rel: "stylesheet", href: stylesheet },
+  // Google font
+  { rel: "preconnect", href: "https://fonts.googleapis.com" },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;200;300;400;500;600;700;800;900&display=swap",
+  },
+];
+
 export async function loader({ request }: LoaderArgs) {
   const locale = await getUserLocale(request);
   return json({ locale });
 }
-
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
-];
 
 export default function App() {
   const { locale } = useLoaderData<typeof loader>();

@@ -120,16 +120,6 @@ export interface NexusGenInputs {
     id?: string | null; // ID
     title?: string | null; // String
   }
-  ComponentSharedRichTextFiltersInput: { // input type
-    and?: Array<NexusGenInputs['ComponentSharedRichTextFiltersInput'] | null> | null; // [ComponentSharedRichTextFiltersInput]
-    body?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
-    not?: NexusGenInputs['ComponentSharedRichTextFiltersInput'] | null; // ComponentSharedRichTextFiltersInput
-    or?: Array<NexusGenInputs['ComponentSharedRichTextFiltersInput'] | null> | null; // [ComponentSharedRichTextFiltersInput]
-  }
-  ComponentSharedRichTextInput: { // input type
-    body?: string | null; // String
-    id?: string | null; // ID
-  }
   ComponentSharedSeoFiltersInput: { // input type
     and?: Array<NexusGenInputs['ComponentSharedSeoFiltersInput'] | null> | null; // [ComponentSharedSeoFiltersInput]
     metaDescription?: NexusGenInputs['StringFilterInput'] | null; // StringFilterInput
@@ -603,10 +593,6 @@ export interface NexusGenObjects {
     id: string; // ID!
     title?: string | null; // String
   }
-  ComponentSharedRichText: { // root type
-    body?: string | null; // String
-    id: string; // ID!
-  }
   ComponentSharedSeo: { // root type
     id: string; // ID!
     metaDescription: string; // String!
@@ -750,7 +736,7 @@ export interface NexusGenInterfaces {
 }
 
 export interface NexusGenUnions {
-  GenericMorph: NexusGenRootTypes['About'] | NexusGenRootTypes['Article'] | NexusGenRootTypes['Category'] | NexusGenRootTypes['ComponentSharedMedia'] | NexusGenRootTypes['ComponentSharedQuote'] | NexusGenRootTypes['ComponentSharedRichText'] | NexusGenRootTypes['ComponentSharedSeo'] | NexusGenRootTypes['ComponentSharedSlider'] | NexusGenRootTypes['Home'] | NexusGenRootTypes['I18NLocale'] | NexusGenRootTypes['UploadFile'] | NexusGenRootTypes['UploadFolder'] | NexusGenRootTypes['UsersPermissionsPermission'] | NexusGenRootTypes['UsersPermissionsRole'] | NexusGenRootTypes['UsersPermissionsUser'];
+  GenericMorph: NexusGenRootTypes['About'] | NexusGenRootTypes['Article'] | NexusGenRootTypes['Category'] | NexusGenRootTypes['ComponentSharedMedia'] | NexusGenRootTypes['ComponentSharedQuote'] | NexusGenRootTypes['ComponentSharedSeo'] | NexusGenRootTypes['ComponentSharedSlider'] | NexusGenRootTypes['Home'] | NexusGenRootTypes['I18NLocale'] | NexusGenRootTypes['UploadFile'] | NexusGenRootTypes['UploadFolder'] | NexusGenRootTypes['UsersPermissionsPermission'] | NexusGenRootTypes['UsersPermissionsRole'] | NexusGenRootTypes['UsersPermissionsUser'];
 }
 
 export type NexusGenRootTypes = NexusGenObjects & NexusGenUnions
@@ -840,10 +826,6 @@ export interface NexusGenFieldTypes {
     body: string | null; // String
     id: string; // ID!
     title: string | null; // String
-  }
-  ComponentSharedRichText: { // field return type
-    body: string | null; // String
-    id: string; // ID!
   }
   ComponentSharedSeo: { // field return type
     id: string; // ID!
@@ -1206,10 +1188,6 @@ export interface NexusGenFieldTypeNames {
     body: 'String'
     id: 'ID'
     title: 'String'
-  }
-  ComponentSharedRichText: { // field return type name
-    body: 'String'
-    id: 'ID'
   }
   ComponentSharedSeo: { // field return type name
     id: 'ID'
@@ -1758,7 +1736,7 @@ export interface NexusGenArgTypes {
 }
 
 export interface NexusGenAbstractTypeMembers {
-  GenericMorph: "About" | "Article" | "Category" | "ComponentSharedMedia" | "ComponentSharedQuote" | "ComponentSharedRichText" | "ComponentSharedSeo" | "ComponentSharedSlider" | "Home" | "I18NLocale" | "UploadFile" | "UploadFolder" | "UsersPermissionsPermission" | "UsersPermissionsRole" | "UsersPermissionsUser"
+  GenericMorph: "About" | "Article" | "Category" | "ComponentSharedMedia" | "ComponentSharedQuote" | "ComponentSharedSeo" | "ComponentSharedSlider" | "Home" | "I18NLocale" | "UploadFile" | "UploadFolder" | "UsersPermissionsPermission" | "UsersPermissionsRole" | "UsersPermissionsUser"
 }
 
 export interface NexusGenTypeInterfaces {

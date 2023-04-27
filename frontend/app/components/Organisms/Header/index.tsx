@@ -32,6 +32,7 @@ export const Header = () => {
           />
         </Form>
         <Toggle
+          value="is-dark-mode"
           checked={isDarkMode}
           onChange={() => {
             if (!isDarkMode) {

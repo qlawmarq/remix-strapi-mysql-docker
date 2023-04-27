@@ -9,7 +9,8 @@
     "build:remix": "remix build",
     "generate:type": "env-cmd -f local.env graphql-codegen --config ./app/lib/graphql-codegen/codegen.yml",
     "format": "prettier --write 'app/**' --config ./.prettierrc.js",
-    "lint": "eslint --fix --cache --cache-location  ./node_modules/.cache/eslint ."
+    "lint": "eslint --fix --cache --cache-location  ./node_modules/.cache/eslint .",
+    "remove:contents": "find ./public/locales -path '*/generated/*' -name '*.json' | xargs rm -r"
   },
   "dependencies": {
     "@apollo/client": "^3.7.12",

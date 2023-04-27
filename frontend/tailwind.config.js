@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        heading: ["'Exo 2'", "sans-serif"],
-        default: ['"Roboto"', "sans-serif"],
+        heading: ["'Noto Sans JP'", "sans-serif"],
+        default: ["'Noto Sans JP'", "sans-serif"],
         ...defaultTheme.fontFamily,
       },
       // http://mcg.mbitson.com/#!?mcgpalette0=%238c52ff
