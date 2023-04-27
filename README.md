@@ -22,7 +22,7 @@
 
 ```
 
-## Setup local development environment
+## Setup local development environment (Docker)
 
 ```sh
 docker-compose build
@@ -57,6 +57,31 @@ If you update a GraphQL query (`gql`) and need to generate type definitions, try
 ```sh
 docker-compose exec frontend bash
 npm run generate:type
+```
+
+## Setup local development environment (without Docker)
+
+It can also be set up without Docker.
+
+### Frontend
+
+Since it is easier to refer to the type information by having `node_modules` locally, not using Docker only for Frontend is also an option.
+
+```sh
+cd frontend
+npm i
+npm run dev
+```
+
+### Backend
+
+Backend need setup database in your local.
+Therefore, I recommend using Docker for the database and backend at least.
+
+```sh
+cd backend
+npm i
+npm run dev
 ```
 
 ## Todo & What I Did
