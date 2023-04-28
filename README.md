@@ -1,4 +1,4 @@
-# remix-strapi-mysql-template
+# remix-strapi-mysql-docker
 
 ## Elements
 
@@ -86,6 +86,7 @@ npm run dev
 
 ## Todo & What I Did
 
-- [x] [Language-selector & support i18n feature.](https://github.com/qlawmarq/remix-strapi-mysql-template/pull/1/files)
-- [x] [Theme selector (dark/light).](https://github.com/qlawmarq/remix-strapi-mysql-template/pull/2)
-- [x] [Frontend works even if the API does not work or does not exist.](https://github.com/qlawmarq/remix-strapi-mysql-template/pull/4)
+- [x] [Language-selector & support i18n feature.](https://github.com/qlawmarq/remix-strapi-mysql-docker/pull/1/files)
+- [x] [Theme selector (dark/light).](https://github.com/qlawmarq/remix-strapi-mysql-docker/pull/2)
+- [x] [Frontend works even if the API does not work or does not exist.](https://github.com/qlawmarq/remix-strapi-mysql-docker/pull/4)
+- [x] [Localized URLs route](https://github.com/qlawmarq/remix-strapi-mysql-docker/pull/6)
