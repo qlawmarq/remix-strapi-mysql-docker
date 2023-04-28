@@ -81,7 +81,7 @@ export async function updateUserLocaleSession({
 }) {
   const session = await getRemixSession(request);
   session.set(USER_LOCALE_KEY, locale);
-  return redirect(locale, {
+  return redirect(`/${locale}`, {
     headers: {
       "Set-Cookie": await remixSessionStorage.commitSession(session, {
         maxAge: 60 * 60 * 24 * 30, // 30 days,
