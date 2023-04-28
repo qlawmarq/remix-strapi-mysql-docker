@@ -1,6 +1,6 @@
 import type { ActionArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
-import { updateUserLocaleSession } from "~/sessions.server";
+import { updateUserLocaleSession } from "~/lib/i18n";
 
 export async function action({ request }: ActionArgs) {
   const formData = await request.formData();

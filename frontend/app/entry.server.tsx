@@ -1,5 +1,5 @@
 import { PassThrough } from "stream";
-import type { EntryContext } from "@remix-run/node";
+import { EntryContext, redirect } from "@remix-run/node";
 import { Response } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import isbot from "isbot";
@@ -7,8 +7,14 @@ import { renderToPipeableStream } from "react-dom/server";
 import { createInstance } from "i18next";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import Backend from "i18next-fs-backend";
-import { resolve } from "node:path";
-import { i18nConfig, remixI18next } from "~/lib/i18n";
+import { join, resolve } from "path";
+import {
+  i18nConfig,
+  remixI18next,
+  getUserLocale,
+  isSupportedLocale,
+  updateUserLocaleSession,
+} from "~/lib/i18n";
 
 const ABORT_DELAY = 5000;
 
@@ -23,17 +29,24 @@ export default async function handleRequest(
     : "onShellReady";
 
   const instance = createInstance();
-  const lng = await remixI18next.getLocale(request);
+  const locale = await getUserLocale(request);
   const ns = remixI18next.getRouteNamespaces(remixContext);
+  const url = new URL(request.url);
+
+  if (isSupportedLocale(url.pathname) === false) {
+    return updateUserLocaleSession({ request, locale });
+  }
 
   await instance
     .use(initReactI18next) // Tell our instance to use react-i18next
     .use(Backend) // Setup our backend
     .init({
       ...i18nConfig, // spread the configuration
-      lng, // The locale we detected above
+      lng: locale, // The locale we detected above
       ns, // The namespaces the routes about to render wants to use
-      backend: { loadPath: resolve("./public/locales/{{lng}}/{{ns}}.json") },
+      backend: {
+        loadPath: resolve("./public/locales/{{lng}}/{{ns}}.json"),
+      },
     });
 
   return new Promise((resolve, reject) => {

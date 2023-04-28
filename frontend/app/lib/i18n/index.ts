@@ -1,6 +1,8 @@
 import { RemixI18Next } from "remix-i18next";
 import Backend from "i18next-fs-backend";
-import { resolve, join } from "path";
+import { join, resolve } from "path";
+import { getRemixSession, remixSessionStorage } from "~/sessions.server";
+import { redirect } from "@remix-run/node";
 
 export const i18nConfig = {
   // This is the list of languages your application supports
@@ -35,3 +37,55 @@ export const remixI18next = new RemixI18Next({
   // a backend here
   backend: Backend,
 });
+
+/**
+ * Check pathname is supported locale
+ * @param pathname URLObject.pathname
+ * @returns {boolean}
+ */
+
+export const isSupportedLocale = (pathname: string): boolean => {
+  if (pathname == "/" || pathname.length <= 1 || !pathname.includes("/")) {
+    return false;
+  }
+  const maybeLocale = pathname.split("/")[1];
+  if (i18nConfig.supportedLngs.includes(maybeLocale)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+/**
+ * User locale session
+ */
+
+const USER_LOCALE_KEY = "userLocale";
+
+export async function getUserLocale(request: Request): Promise<string> {
+  const session = await getRemixSession(request);
+  let locale: string | undefined | null = session.get(USER_LOCALE_KEY);
+  // If session does not exist, then return i18n default locale.
+  if (!locale) {
+    locale = await remixI18next.getLocale(request);
+  }
+  return locale;
+}
+
+export async function updateUserLocaleSession({
+  request,
+  locale,
+}: {
+  request: Request;
+  locale: string;
+}) {
+  const session = await getRemixSession(request);
+  session.set(USER_LOCALE_KEY, locale);
+  return redirect(`/${locale}`, {
+    headers: {
+      "Set-Cookie": await remixSessionStorage.commitSession(session, {
+        maxAge: 60 * 60 * 24 * 30, // 30 days,
+      }),
+    },
+  });
+}

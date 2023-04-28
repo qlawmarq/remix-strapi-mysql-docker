@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { Container } from "~/components/Atoms/Container";
 import { Select, Toggle } from "~/components/Atoms/Form";
 
-export const Header = () => {
+export const Header = ({ locale }: { locale: string }) => {
   const [isDarkMode, setIsDarkMode] = useState<boolean>();
   const { i18n } = useTranslation();
   const el = useRef<HTMLFormElement>(null);
@@ -23,7 +23,7 @@ export const Header = () => {
             className="w-auto"
             id="locale"
             name="locale"
-            value={i18n.language}
+            value={locale}
             options={i18nConfig.supportedLngs}
             onChange={async (v: React.ChangeEvent<HTMLSelectElement>) => {
               changeLanguageHandler(v.currentTarget.value);

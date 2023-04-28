@@ -8,14 +8,14 @@ import type {
   GetAboutByLocaleQueryVariables,
 } from "types/generated";
 import { H1 } from "~/components/Atoms/Typography";
-import { getUserLocale } from "~/sessions.server";
+import { getUserLocale } from "~/lib/i18n";
 import { Markdown } from "~/components/Molecules/Markdown";
 import { readJsonFileByPath, writeJsonFileToPath } from "~/lib/utils/json";
 import { ApolloQueryResult } from "@apollo/client";
 import { APP_DATA_RETRIEVAL_METHOD } from "~/lib/utils/constants";
 
-export const loader = async ({ request }: LoaderArgs) => {
-  const locale = await getUserLocale(request);
+export const loader = async ({ params, request }: LoaderArgs) => {
+  const locale = params.locale;
 
   // Load all articles
   const articlesValiables: GetAboutByLocaleQueryVariables = {
