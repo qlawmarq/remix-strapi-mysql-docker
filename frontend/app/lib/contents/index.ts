@@ -39,7 +39,11 @@ export const getHomeContents = async ({ locale }: { locale: string }) => {
   return home;
 };
 
-export const getAllArticles = async ({ locale }: { locale: string }) => {
+export const getAllArticlesContents = async ({
+  locale,
+}: {
+  locale: string;
+}) => {
   const articlesValiables: GetAllArticlesByLocaleQueryVariables = {
     locale: locale,
   };
@@ -58,7 +62,7 @@ export const getAllArticles = async ({ locale }: { locale: string }) => {
   return articles;
 };
 
-export const getAbout = async ({ locale }: { locale: string }) => {
+export const getAboutContents = async ({ locale }: { locale: string }) => {
   const aboutValiables: GetAboutByLocaleQueryVariables = {
     locale: locale,
   };
@@ -77,7 +81,7 @@ export const getAbout = async ({ locale }: { locale: string }) => {
   return res;
 };
 
-export const getArticle = async ({
+export const getArticleContents = async ({
   locale,
   slug,
 }: {

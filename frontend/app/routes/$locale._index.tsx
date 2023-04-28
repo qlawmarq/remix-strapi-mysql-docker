@@ -4,7 +4,7 @@ import { useLoaderData } from "@remix-run/react";
 import { H2, Span } from "~/components/Atoms/Typography";
 import { Card } from "~/components/Atoms/Card";
 
-import { getAllArticles, getHomeContents } from "~/lib/contents";
+import { getAllArticlesContents, getHomeContents } from "~/lib/contents";
 
 export const loader = async ({ params }: LoaderArgs) => {
   const locale = params.locale;
@@ -19,7 +19,7 @@ export const loader = async ({ params }: LoaderArgs) => {
   const home = await getHomeContents({ locale });
 
   // Load all articles
-  const articles = await getAllArticles({ locale });
+  const articles = await getAllArticlesContents({ locale });
 
   return json({ articles: articles.data.articles, home: home.data.home });
 };

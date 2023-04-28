@@ -1,8 +1,12 @@
 import { LoaderArgs } from "@remix-run/node";
-import { getAbout, getAllArticles, getHomeContents } from "~/lib/contents";
+import {
+  getAboutContents,
+  getAllArticlesContents,
+  getHomeContents,
+} from "~/lib/contents";
 import { i18nConfig } from "~/lib/i18n";
 
-export const loader = async ({ params, request }: LoaderArgs) => {
+export const loader = async ({ request }: LoaderArgs) => {
   // handle "GET" request
   const url = new URL(request.url).origin;
   let content = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
@@ -14,14 +18,14 @@ export const loader = async ({ params, request }: LoaderArgs) => {
         <lastmod>${home.data.home?.data?.attributes?.updatedAt}</lastmod>
       </url>
     `;
-    const about = await getAbout({ locale });
+    const about = await getAboutContents({ locale });
     content += `
       <url>
         <loc>${url}/${locale}/about</loc>
         <lastmod>${about.data.about?.data?.attributes?.updatedAt}</lastmod>
       </url>
     `;
-    const articles = await getAllArticles({ locale });
+    const articles = await getAllArticlesContents({ locale });
     const arrayArticles = articles.data.articles?.data || [];
     for (const article of arrayArticles) {
       content += `

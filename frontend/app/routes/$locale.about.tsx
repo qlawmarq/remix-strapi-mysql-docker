@@ -3,7 +3,7 @@ import { V2_MetaFunction } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
 import { H1 } from "~/components/Atoms/Typography";
 import { Markdown } from "~/components/Molecules/Markdown";
-import { getAbout } from "~/lib/contents";
+import { getAboutContents } from "~/lib/contents";
 
 export const loader = async ({ params, request }: LoaderArgs) => {
   const locale = params.locale;
@@ -15,7 +15,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
   }
 
   // Load about
-  const res = await getAbout({ locale });
+  const res = await getAboutContents({ locale });
 
   const data = res.data.about?.data?.attributes;
 
