@@ -33,10 +33,6 @@ story/background for it?
 * [ ] There is a dependent PR that needs to be deployed first
 -->
 
-## Security
-
-_Before you click Merge, take a step back and think how someone could break the [Confidentiality, Integrity and Availability](https://docs.google.com/presentation/d/1YdFlYBLnbNoiSAMOKjopiF4u34StXTK2qYdOLkMsEKo/edit?usp=sharing) of the code you've just written. Are secrets secret? Is there any sensitive information disclosed in logs or error messages? How does your code ensure that information is accurate, complete and protected from modification? Will your code keep Contentful working and functioning?_
-
 <!-- # Reminders
 * [Write good pull requests!](https://seesparkbox.com/foundry/github_pull_requests_for_everyone) 👼
 * [Be a good reviewer!](https://seesparkbox.com/foundry/stop_giving_depressing_code_reviews) 🧐
