@@ -9,13 +9,13 @@ import type {
 } from "types/generated";
 import { H1, Span } from "~/components/Atoms/Typography";
 import { Markdown } from "~/components/Molecules/Markdown";
-import { getUserLocale } from "~/sessions.server";
+import { getUserLocale } from "~/lib/i18n";
 import { readJsonFileByPath, writeJsonFileToPath } from "~/lib/utils/json";
 import { ApolloQueryResult } from "@apollo/client";
 import { APP_DATA_RETRIEVAL_METHOD } from "~/lib/utils/constants";
 
 export const loader = async ({ params, request }: LoaderArgs) => {
-  const locale = await getUserLocale(request);
+  const locale = params.locale;
   const valiables: GetArticlesByLocaleAndSlugQueryVariables = {
     locale: locale,
     slug: params.slug,

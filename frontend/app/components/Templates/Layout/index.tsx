@@ -6,14 +6,15 @@ import { Container } from "~/components/Atoms/Container";
 
 interface LayoutPropsInterface {
   children: ReactNode;
+  locale: string;
 }
 
-export const Layout = ({ children }: LayoutPropsInterface) => {
+export const Layout = ({ children, locale }: LayoutPropsInterface) => {
   return (
     <main>
-      <Header />
+      <Header locale={locale} />
       <Container>{children}</Container>
-      <Footer />
+      <Footer locale={locale} />
     </main>
   );
 };

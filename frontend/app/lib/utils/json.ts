@@ -1,5 +1,5 @@
 import fs from "fs";
-import { resolve, join } from "path";
+import { join, resolve } from "path";
 
 // JSON file path
 const dataPath = (path: string = "") => resolve(join("./public/", path));

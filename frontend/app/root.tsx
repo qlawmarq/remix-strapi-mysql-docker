@@ -10,7 +10,7 @@ import {
 } from "@remix-run/react";
 import { LinksFunction, LoaderArgs, json } from "@remix-run/node";
 import { Layout } from "./components/Templates/Layout";
-import { getUserLocale } from "./sessions.server";
+import { getUserLocale } from "~/lib/i18n";
 import { useEffect } from "react";
 
 export const links: LinksFunction = () => [
@@ -24,8 +24,8 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export async function loader({ request }: LoaderArgs) {
-  const locale = await getUserLocale(request);
+export async function loader({ params, request }: LoaderArgs) {
+  const locale = params.locale ? params.locale : await getUserLocale(request);
   return json({ locale });
 }
 
@@ -53,7 +53,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Layout>
+        <Layout locale={locale}>
           <Outlet />
         </Layout>
         <ScrollRestoration />

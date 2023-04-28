@@ -11,19 +11,17 @@ import type {
   GetAllArticlesByLocaleQueryVariables,
 } from "types/generated";
 import { H2, Span } from "~/components/Atoms/Typography";
-import { remixI18next } from "~/lib/i18n";
-import { getUserLocale } from "~/sessions.server";
 import { Card } from "~/components/Atoms/Card";
 import { readJsonFileByPath, writeJsonFileToPath } from "~/lib/utils/json";
 import { APP_DATA_RETRIEVAL_METHOD } from "~/lib/utils/constants";
 import { ApolloQueryResult } from "@apollo/client";
 
-export const loader = async ({ request }: LoaderArgs) => {
+export const loader = async ({ params, request }: LoaderArgs) => {
   // // In case if you wanna load locale json file in server side, use like following:
   // const t = await remixI18next.getFixedT(request, "common");
   // cosole.log(t("title"));
 
-  const locale = await getUserLocale(request);
+  const locale = params.locale;
 
   // Load home SEO setting
   const homeValiables: GetHomeByLocaleQueryVariables = {
@@ -79,7 +77,7 @@ export default function Index() {
           return (
             <li key={idx} className="flex flex-col">
               {d.attributes?.slug ? (
-                <Link to={d.attributes?.slug}>
+                <Link to={`article/${d.attributes?.slug}`}>
                   <Card>
                     <H2>{d.attributes?.title}</H2>
                     <Span>
