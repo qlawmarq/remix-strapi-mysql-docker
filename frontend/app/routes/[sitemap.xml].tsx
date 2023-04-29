@@ -1,4 +1,5 @@
 import { LoaderArgs } from "@remix-run/node";
+import { formatISO9075 } from "date-fns";
 import {
   getAboutContents,
   getAllArticlesContents,
@@ -6,23 +7,29 @@ import {
 } from "~/lib/contents";
 import { i18nConfig } from "~/lib/i18n";
 
+const dateformat = (d: Date) => formatISO9075(d, { representation: "date" });
+
 export const loader = async ({ request }: LoaderArgs) => {
   // handle "GET" request
-  const url = new URL(request.url).origin;
+  const origin = new URL(request.url).origin;
   let content = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
   for (const locale of i18nConfig.supportedLngs) {
     const home = await getHomeContents({ locale });
     content += `
       <url>
-        <loc>${url}/${locale}</loc>
-        <lastmod>${home.data.home?.data?.attributes?.updatedAt}</lastmod>
+        <loc>${origin}/${locale}</loc>
+        <lastmod>${dateformat(
+          new Date(home.data.home?.data?.attributes?.updatedAt)
+        )}</lastmod>
       </url>
     `;
     const about = await getAboutContents({ locale });
     content += `
       <url>
-        <loc>${url}/${locale}/about</loc>
-        <lastmod>${about.data.about?.data?.attributes?.updatedAt}</lastmod>
+        <loc>${origin}/${locale}/about</loc>
+        <lastmod>${dateformat(
+          new Date(about.data.about?.data?.attributes?.updatedAt)
+        )}</lastmod>
       </url>
     `;
     const articles = await getAllArticlesContents({ locale });
@@ -30,8 +37,10 @@ export const loader = async ({ request }: LoaderArgs) => {
     for (const article of arrayArticles) {
       content += `
       <url>
-        <loc>${url}/${locale}/article/${article.attributes?.slug}</loc>
-        <lastmod>${article.attributes?.updatedAt}</lastmod>
+        <loc>${origin}/${locale}/article/${article.attributes?.slug}</loc>
+        <lastmod>${dateformat(
+          new Date(article.attributes?.updatedAt)
+        )}</lastmod>
       </url>
     `;
     }
