@@ -7,6 +7,9 @@ import {
 } from "~/lib/contents";
 import { i18nConfig } from "~/lib/i18n";
 
+// https://www.sitemaps.org/protocol.html
+// https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#general-guidelines
+
 const dateformat = (d: Date) => formatISO9075(d, { representation: "date" });
 
 export const loader = async ({ request }: LoaderArgs) => {
