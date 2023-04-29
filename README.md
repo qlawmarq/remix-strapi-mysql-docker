@@ -90,3 +90,4 @@ npm run dev
 - [x] [Theme selector (dark/light).](https://github.com/qlawmarq/remix-strapi-mysql-docker/pull/2)
 - [x] [Frontend works even if the API does not work or does not exist.](https://github.com/qlawmarq/remix-strapi-mysql-docker/pull/4)
 - [x] [Localized URLs route](https://github.com/qlawmarq/remix-strapi-mysql-docker/pull/6)
+- [x] [Sitemap.xml and robots.txt](https://github.com/qlawmarq/remix-strapi-mysql-docker/pull/7)
