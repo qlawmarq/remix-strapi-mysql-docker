@@ -1,44 +1,22 @@
 import { LoaderArgs, json } from "@remix-run/node";
 import { V2_MetaFunction } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
-import { graphQLClient } from "~/lib/apollo";
-import { getArticlesByLocaleAndSlug } from "~/lib/apollo/query";
-import type {
-  GetArticlesByLocaleAndSlugQuery,
-  GetArticlesByLocaleAndSlugQueryVariables,
-} from "types/generated";
 import { H1, Span } from "~/components/Atoms/Typography";
 import { Markdown } from "~/components/Molecules/Markdown";
-import { getUserLocale } from "~/lib/i18n";
-import { readJsonFileByPath, writeJsonFileToPath } from "~/lib/utils/json";
-import { ApolloQueryResult } from "@apollo/client";
-import { APP_DATA_RETRIEVAL_METHOD } from "~/lib/utils/constants";
+import { getArticleContents } from "~/lib/contents";
 
 export const loader = async ({ params, request }: LoaderArgs) => {
   const locale = params.locale;
-  const valiables: GetArticlesByLocaleAndSlugQueryVariables = {
-    locale: locale,
-    slug: params.slug,
-  };
-  const articleJsonPath = `locales/${locale}/generated/article.${params.slug}.json`;
-  const res =
-    APP_DATA_RETRIEVAL_METHOD === "json"
-      ? (readJsonFileByPath(
-          articleJsonPath
-        ) as ApolloQueryResult<GetArticlesByLocaleAndSlugQuery>)
-      : await graphQLClient.query<GetArticlesByLocaleAndSlugQuery>({
-          query: getArticlesByLocaleAndSlug,
-          variables: valiables,
-        });
-  const data = res.data.articles?.data;
-  if (data === undefined || data.length !== 1) {
+  const slug = params.slug;
+
+  if (locale === undefined || slug === undefined) {
     throw new Response("Not Found", {
       status: 404,
     });
   }
-  APP_DATA_RETRIEVAL_METHOD === "api" &&
-    writeJsonFileToPath(res, articleJsonPath);
-  return json({ response: data[0] });
+
+  const data = await getArticleContents({ locale, slug: slug });
+  return json({ response: data });
 };
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data }) => {

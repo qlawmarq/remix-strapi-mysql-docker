@@ -1,38 +1,21 @@
 import { LoaderArgs, json } from "@remix-run/node";
 import { V2_MetaFunction } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
-import { graphQLClient } from "~/lib/apollo";
-import { getAboutByLocale } from "~/lib/apollo/query";
-import type {
-  GetAboutByLocaleQuery,
-  GetAboutByLocaleQueryVariables,
-} from "types/generated";
 import { H1 } from "~/components/Atoms/Typography";
-import { getUserLocale } from "~/lib/i18n";
 import { Markdown } from "~/components/Molecules/Markdown";
-import { readJsonFileByPath, writeJsonFileToPath } from "~/lib/utils/json";
-import { ApolloQueryResult } from "@apollo/client";
-import { APP_DATA_RETRIEVAL_METHOD } from "~/lib/utils/constants";
+import { getAboutContents } from "~/lib/contents";
 
 export const loader = async ({ params, request }: LoaderArgs) => {
   const locale = params.locale;
 
-  // Load all articles
-  const articlesValiables: GetAboutByLocaleQueryVariables = {
-    locale: locale,
-  };
-  const aboutJsonPath = `locales/${locale}/generated/about.json`;
-  const res =
-    APP_DATA_RETRIEVAL_METHOD === "json"
-      ? (readJsonFileByPath(
-          aboutJsonPath
-        ) as ApolloQueryResult<GetAboutByLocaleQuery>)
-      : await graphQLClient.query<GetAboutByLocaleQuery>({
-          query: getAboutByLocale,
-          variables: articlesValiables,
-        });
-  APP_DATA_RETRIEVAL_METHOD === "api" &&
-    writeJsonFileToPath(res, aboutJsonPath);
+  if (locale === undefined) {
+    throw new Response("Not Found", {
+      status: 404,
+    });
+  }
+
+  // Load about
+  const res = await getAboutContents({ locale });
 
   const data = res.data.about?.data?.attributes;
 
