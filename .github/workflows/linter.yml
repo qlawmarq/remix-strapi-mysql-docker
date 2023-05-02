@@ -1,10 +1,10 @@
-name: Deployer
+name: Linter
 
 on:
   pull_request:
     branches: [master, main]
 jobs:
-  run-deploy:
+  run-linter:
     runs-on: ubuntu-latest
 
     steps:
