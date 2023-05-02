@@ -2,7 +2,8 @@ import fs from "fs";
 import { join, resolve } from "path";
 
 // JSON file path
-const dataPath = (path: string = "") => resolve(join("./public/", path));
+const dataPath = (path: string = "") =>
+  resolve(join(`${__dirname}/../public/`, path));
 
 // function to read file contents
 export const readJsonFileByPath = (path: string) => {
