@@ -1,4 +1,5 @@
-import React, { HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
+import React from "react";
 import { Paragraph, Span } from "../../Atoms/Typography";
 import { Button } from "../../Atoms/Button";
 

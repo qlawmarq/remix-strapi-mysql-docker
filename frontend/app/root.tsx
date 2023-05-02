@@ -1,4 +1,4 @@
-import stylesheet from "~/tailwind.css";
+import stylesheet from "~/assets/css/tailwind.css";
 import {
   Links,
   LiveReload,
@@ -8,7 +8,8 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
-import { LinksFunction, LoaderArgs, json } from "@remix-run/node";
+import type { LinksFunction, LoaderArgs} from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { Layout } from "./components/Templates/Layout";
 import { getUserLocale } from "~/lib/i18n";
 import { useEffect } from "react";

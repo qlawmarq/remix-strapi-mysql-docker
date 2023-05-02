@@ -1,9 +1,9 @@
-import { LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 
 // https://developers.google.com/search/docs/crawling-indexing/robots/intro
 
 export const loader = ({ request }: LoaderArgs) => {
-  const origin = new URL(request.url).origin;
+  const origin = process.env.APP_FRONTEND_URL || new URL(request.url).origin;
   // handle "GET" request
   const robotText = `
 User-agent: *

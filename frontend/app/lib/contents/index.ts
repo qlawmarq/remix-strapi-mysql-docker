@@ -1,5 +1,5 @@
-import { ApolloQueryResult } from "@apollo/client";
-import {
+import type { ApolloQueryResult } from "@apollo/client";
+import type {
   GetHomeByLocaleQueryVariables,
   GetHomeByLocaleQuery,
   GetAllArticlesByLocaleQueryVariables,

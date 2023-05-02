@@ -1,5 +1,7 @@
-import React, { InputHTMLAttributes } from "react";
-import { VerticalBase, BaseProps } from "../../Base/VerticalBase";
+import type { InputHTMLAttributes } from "react";
+import React from "react";
+import type { BaseProps } from "../../Base/VerticalBase";
+import { VerticalBase } from "../../Base/VerticalBase";
 import { commonInputClassName, commonInputErrorClassName } from "../../common";
 
 const Component: React.FC<

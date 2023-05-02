@@ -1,4 +1,4 @@
-import { LoaderArgs } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { formatISO9075 } from "date-fns";
 import {
   getAboutContents,
@@ -14,7 +14,7 @@ const dateformat = (d: Date) => formatISO9075(d, { representation: "date" });
 
 export const loader = async ({ request }: LoaderArgs) => {
   // handle "GET" request
-  const origin = new URL(request.url).origin;
+  const origin = process.env.APP_FRONTEND_URL || new URL(request.url).origin;
   let content = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
   for (const locale of i18nConfig.supportedLngs) {
     const home = await getHomeContents({ locale });

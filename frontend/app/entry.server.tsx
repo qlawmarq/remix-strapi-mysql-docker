@@ -1,5 +1,5 @@
 import { PassThrough } from "stream";
-import { EntryContext, redirect } from "@remix-run/node";
+import type { EntryContext } from "@remix-run/node";
 import { Response } from "@remix-run/node";
 import { RemixServer } from "@remix-run/react";
 import isbot from "isbot";
@@ -7,7 +7,7 @@ import { renderToPipeableStream } from "react-dom/server";
 import { createInstance } from "i18next";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import Backend from "i18next-fs-backend";
-import { join, resolve } from "path";
+import { resolve } from "path";
 import {
   i18nConfig,
   remixI18next,

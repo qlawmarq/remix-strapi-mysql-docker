@@ -1,0 +1,29 @@
+name: Linter
+
+on:
+  pull_request:
+    branches: [master, main]
+jobs:
+  run-linter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18.x
+
+      - name: Package Install
+        working-directory: frontend
+        run: npm install
+
+      - name: Run ESLint
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Run TSC
+        working-directory: frontend
+        run: npm run typecheck

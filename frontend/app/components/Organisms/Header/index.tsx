@@ -1,6 +1,6 @@
+import React, { useEffect, useRef, useState } from "react";
 import { Form } from "@remix-run/react";
 import { i18nConfig } from "~/lib/i18n";
-import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Container } from "~/components/Atoms/Container";
 import { Select, Toggle } from "~/components/Atoms/Form";

@@ -1,6 +1,8 @@
-import React, { InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes } from "react";
+import React from "react";
 import { twMerge } from "tailwind-merge";
-import { HorizontalBase, BaseProps } from "../../Base/HorizontalBase";
+import type { BaseProps } from "../../Base/HorizontalBase";
+import { HorizontalBase } from "../../Base/HorizontalBase";
 
 interface IFToggle {
   onChange: (v: boolean) => void;
@@ -40,7 +42,7 @@ const Component: React.FC<InputHTMLAttributes<HTMLInputElement> & IFToggle> = (
 };
 
 export const Toggle: React.FC<
-  BaseProps & InputHTMLAttributes<HTMLInputElement>
+  BaseProps & InputHTMLAttributes<HTMLInputElement> & IFToggle
 > = (props) => {
   return (
     <HorizontalBase {...props}>
