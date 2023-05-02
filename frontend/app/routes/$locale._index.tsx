@@ -1,5 +1,7 @@
-import { LoaderArgs, json } from "@remix-run/node";
-import { Link, V2_MetaFunction } from "@remix-run/react";
+import type { LoaderArgs} from "@remix-run/node";
+import { json } from "@remix-run/node";
+import type { V2_MetaFunction } from "@remix-run/react";
+import { Link } from "@remix-run/react";
 import { useLoaderData } from "@remix-run/react";
 import { H2, Span } from "~/components/Atoms/Typography";
 import { Card } from "~/components/Atoms/Card";

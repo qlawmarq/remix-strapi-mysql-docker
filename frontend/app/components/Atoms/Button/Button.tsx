@@ -1,6 +1,6 @@
-import React, { ButtonHTMLAttributes } from "react";
-// import { Loader } from "react-feather";
-import { Loader } from "@components/Atoms/Loading";
+import type { ButtonHTMLAttributes } from "react";
+import React from "react";
+import { Loader } from "react-feather";
 
 type Props = {
   variant?: "primary" | "secondary";

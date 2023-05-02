@@ -1,5 +1,7 @@
-import React, { SelectHTMLAttributes } from "react";
-import { VerticalBase, BaseProps } from "../../Base/VerticalBase";
+import type { SelectHTMLAttributes } from "react";
+import React from "react";
+import type { BaseProps } from "../../Base/VerticalBase";
+import { VerticalBase } from "../../Base/VerticalBase";
 import { ChevronDown } from "react-feather";
 import { commonInputClassName, commonInputErrorClassName } from "../../common";
 

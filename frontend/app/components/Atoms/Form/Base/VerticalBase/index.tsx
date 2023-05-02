@@ -1,4 +1,5 @@
-import React, { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
+import React from "react";
 import { Label, Span } from "../../../Typography";
 
 export type BaseProps = HTMLAttributes<HTMLElement> & {

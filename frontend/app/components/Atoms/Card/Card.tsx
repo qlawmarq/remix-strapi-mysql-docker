@@ -1,4 +1,5 @@
-import React, { HTMLAttributes } from "react";
+import type { HTMLAttributes } from "react";
+import React from "react";
 import { twMerge } from "tailwind-merge";
 
 export const Card: React.FC<HTMLAttributes<HTMLElement>> = (props) => {
