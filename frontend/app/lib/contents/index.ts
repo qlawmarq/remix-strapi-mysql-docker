@@ -24,7 +24,7 @@ export const getHomeContents = async ({ locale }: { locale: string }) => {
   const homeValiables: GetHomeByLocaleQueryVariables = {
     locale: locale,
   };
-  const homeJsonPath = `locales/${locale}/generated/home.json`;
+  const homeJsonPath = `contents/${locale}/home.json`;
   const home =
     APP_DATA_RETRIEVAL_METHOD === "json"
       ? (readJsonFileByPath(
@@ -47,7 +47,7 @@ export const getAllArticlesContents = async ({
   const articlesValiables: GetAllArticlesByLocaleQueryVariables = {
     locale: locale,
   };
-  const articlesJsonPath = `locales/${locale}/generated/articles.json`;
+  const articlesJsonPath = `contents/${locale}/articles.json`;
   const articles =
     APP_DATA_RETRIEVAL_METHOD === "json"
       ? (readJsonFileByPath(
@@ -66,7 +66,7 @@ export const getAboutContents = async ({ locale }: { locale: string }) => {
   const aboutValiables: GetAboutByLocaleQueryVariables = {
     locale: locale,
   };
-  const aboutJsonPath = `locales/${locale}/generated/about.json`;
+  const aboutJsonPath = `contents/${locale}/about.json`;
   const res =
     APP_DATA_RETRIEVAL_METHOD === "json"
       ? (readJsonFileByPath(
@@ -92,7 +92,7 @@ export const getArticleContents = async ({
     locale: locale,
     slug: slug,
   };
-  const articleJsonPath = `locales/${locale}/generated/article.${slug}.json`;
+  const articleJsonPath = `contents/${locale}/article.${slug}.json`;
   const res =
     APP_DATA_RETRIEVAL_METHOD === "json"
       ? (readJsonFileByPath(
