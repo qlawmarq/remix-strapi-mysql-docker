@@ -18,7 +18,7 @@ services:
       - ./backend/config:/opt/app/config
       - ./backend/src:/opt/app/src
       - ./backend/package.json:/opt/package.json
-      - ./backend/local.env:/opt/app/.env
+      - ./backend/env/local.env:/opt/app/.env
       - ./backend/public:/opt/app/public
       - ./backend/types:/opt/app/types
     ports:
