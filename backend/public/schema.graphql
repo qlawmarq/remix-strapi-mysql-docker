@@ -58,7 +58,7 @@ type Article {
   locale: String
   localizations(filters: ArticleFiltersInput, pagination: PaginationArg = {}, publicationState: PublicationState = LIVE, sort: [String] = []): ArticleRelationResponseCollection
   publishedAt: DateTime
-  slug: String
+  slug: String!
   title: String
   updatedAt: DateTime
 }

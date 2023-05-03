@@ -33,19 +33,11 @@
         }
       }
     },
-    "slug": {
-      "type": "uid",
-      "targetField": "title"
-    },
     "cover": {
       "type": "media",
       "multiple": false,
       "required": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos"
-      ],
+      "allowedTypes": ["images", "files", "videos"],
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -65,6 +57,18 @@
         }
       },
       "type": "richtext"
+    },
+    "slug": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "string",
+      "required": true,
+      "unique": false,
+      "regex": "^[a-z0-9]+(?:-[a-z0-9]+)*$",
+      "targetField": "title"
     }
   }
 }

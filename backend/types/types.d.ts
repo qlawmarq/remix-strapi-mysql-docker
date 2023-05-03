@@ -565,7 +565,7 @@ export interface NexusGenObjects {
     description?: string | null; // String
     locale?: string | null; // String
     publishedAt?: NexusGenScalars['DateTime'] | null; // DateTime
-    slug?: string | null; // String
+    slug: string; // String!
     title?: string | null; // String
     updatedAt?: NexusGenScalars['DateTime'] | null; // DateTime
   }
@@ -776,7 +776,7 @@ export interface NexusGenFieldTypes {
     locale: string | null; // String
     localizations: NexusGenRootTypes['ArticleRelationResponseCollection'] | null; // ArticleRelationResponseCollection
     publishedAt: NexusGenScalars['DateTime'] | null; // DateTime
-    slug: string | null; // String
+    slug: string; // String!
     title: string | null; // String
     updatedAt: NexusGenScalars['DateTime'] | null; // DateTime
   }
